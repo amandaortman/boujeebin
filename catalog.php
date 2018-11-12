@@ -1,7 +1,6 @@
 <?php
-//include('includes/config.php');
 include('includes/db.php');
-include('includes/header.html');
+include('includes/header.php');
 
 //temp
 if (isset($_GET['page'])) {
@@ -68,11 +67,9 @@ if (isset($_GET['page'])) {
         <!--computer-->
         <div class="computer only tablet only three column row middle aligned center aligned">
           <div class="four wide column"></div>
-
           <div class="center aligned eight wide column">
             <div class="ui header"><?php echo $page_section; ?></div>
           </div>
-
           <div class="right floated right aligned four wide column">
             <div class="basic segment">
               <select class="ui dropdown">
@@ -87,11 +84,7 @@ if (isset($_GET['page'])) {
             </div>
           </div>
         </div>
-
       </div>
-
-
-
 
 
       <div class="ui grid">
@@ -100,14 +93,11 @@ if (isset($_GET['page'])) {
           <div class="ui vertical accordion menu">
             <?php include("./includes/filter.html");?></div>
           </div>
-          
           <div class="sixteen wide mobile column eleven wide tablet column twelve wide computer column">
             <?php include("./includes/items.php"); ?>
           </div>
-          
         </div>
       </div>
-
 		</div>
 
 		<div id="footer-style" class="ui container fluid footer-style">

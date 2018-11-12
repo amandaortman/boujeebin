@@ -3,7 +3,6 @@ if(isset($_SESSION['user_id'])) {
     header('Location: account.php');
 }
 
-//include('includes/config.php');
 include('includes/db.php');
 include('includes/header.html');
 ?>

@@ -1,7 +1,6 @@
 <?php
-//include('includes/config.php');
 include('includes/db.php');
-include('includes/header.html');
+include('includes/header.php');
 ?>
 
 		<div class="ui container full-basic-segment">
@@ -161,7 +160,7 @@ include('includes/header.html');
 
 					<div class="one column row">
 						<div class="right aligned column">
-							<button class="ui primary button"><a href="checkout.php">Proceed to Checkout</a></button>
+							<a href="checkout.php"><button class="ui primary button">Proceed to Checkout</button></a>
 						</div>
 					</div>
 

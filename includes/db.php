@@ -2,7 +2,7 @@
 
 	DEFINE ('DB_USER','');
 	DEFINE ('DB_PASSWORD','');
-	DEFINE ('DB_HOST','localhost');
+	DEFINE ('DB_HOST','');
 	DEFINE ('DB_NAME','');
 
 	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die(mysql_error());
@@ -29,3 +29,4 @@
 
 	$currentPage = basename($_SERVER['PHP_SELF']);
 	//echo $currentPage;
+?>	

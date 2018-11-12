@@ -1,7 +1,6 @@
 <?php
-//include('includes/config.php');
 include('includes/db.php');
-include('includes/header.html');
+include('includes/header.php');
 ?>
 
 		<div class="ui container full-basic-segment">
@@ -58,7 +57,7 @@ include('includes/header.html');
 							echo "<h3 class=\"ui header\"> Sale Price: " . $row['prodSale'] . "</h3>";
 							
 							echo "<p>" . $row['prodDesc'] . "</p>";
-							echo "<button class=\"ui primary button\"><a href=\"product.php\">View Product</a></button>";
+							echo "<a href=\"product.php\"><button class=\"ui primary button\">View Product</button></a>";
 
 							}
 						} else {
