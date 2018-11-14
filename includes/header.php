@@ -44,6 +44,11 @@
 					<a href="catalog.php?page=womens">Womens</a>
 					<a href="login.php">Account</a>
 					<a href="cart.php">Cart</a>
+					<?php
+						if(isset($_SESSION['user_id'])){
+							echo '<a href="includes/logout.php">Logout</a>';
+						}
+					?>
 				</div>
 
 				<div class="doubling ui padded grid">
@@ -124,6 +129,11 @@
 								<ul class="nav">
 									<li class="nav-item"><a href="login.php" class="nav-link">ACCOUNT</a></li>
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
+									<?php
+										if(isset($_SESSION['user_id'])){
+											echo '<li class="nav-item"><a href="includes/logout.php" class="nav-link">Logout</a></li>';
+										}
+									?>
 								</ul>		
 							</div>
 						</div>
