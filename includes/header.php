@@ -86,7 +86,11 @@
 					<a href="catalog.php?page=womens">Womens</a>
 					<?php
 						if(isset($_SESSION['user_id'])){
-							echo '<a href="client.php">Account</a>';
+							if(isset($_SESSION['type'])=='admin'){
+								echo '<a href="admin.php">Account</a>';
+							} else {
+								echo '<a href="client.php">Account</a>';
+							}
 						} else {
 							echo '<a href="login.php">Account</a>';
 						}
@@ -180,7 +184,11 @@
 								<ul class="nav">
 									<?php
 										if(isset($_SESSION['user_id'])){
-											echo '<li class="nav-item"><a href="client.php" class="nav-link">Account</a></li>';
+											if(isset($_SESSION['type'])=='admin'){
+              									echo '<li class="nav-item"><a href="admin.php" class="nav-link">Account</a></li>';
+              								} else {
+              									echo '<li class="nav-item"><a href="client.php" class="nav-link">Account</a></li>';
+              								}
 										} else {
 											echo '<li class="nav-item"><a href="login.php" class="nav-link">Account</a></li>';
 										}
