@@ -9,9 +9,14 @@
 	        <div class="ui grid">
 	        	<div class="one column row">
 	        		<div class="column">
-	        			<form id="registration_form" class="ui form" action="new_account.php" method="POST">
+	        			<form id="registration_form" class="ui form" action="includes/new_account.php" method="POST">
 	        				<h4 class="ui dividing header">Registration</h4>
-	        				<div class="ui error message"></div>
+        					<?php
+				              if (isset($_SESSION['user_error'])) {   
+				                echo '<div class="ui basic red error message visible">' . $_SESSION['user_error'] . '</div>';
+				                unset($_SESSION['user_error']);
+				              }
+				            ?>
 	        				<div class="two fields">
 		        				<div class="field">
 							    	<label>First Name</label>
@@ -49,7 +54,7 @@
 							</div>
 
 						    <div class="field">
-						    	<button class="blue ui button" form="registration_form" type="submit">Submit</button>
+						    	<button class="blue ui button" form="registration_form" name="submit" type="submit">Submit</button>
 						    </div>
 						</form>
 					</div>
@@ -64,5 +69,5 @@
 		</footer>
 	</div>
 
-	<script src="validate.js"></script>
+	<!--script src="validate.js"></script-->
 </body>
