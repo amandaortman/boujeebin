@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 	<head>
 
 	<?php 
@@ -19,7 +20,6 @@
 			@import url('./css/reset.css');
 			@import url('./css/styles.css');
 			@import url('https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css');
-
 			@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR:600,700,900');
 			@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 		</style>
@@ -86,6 +86,11 @@
 					<a href="catalog.php?page=womens">Womens</a>
 					<a href="login.php">Account</a>
 					<a href="cart.php">Cart</a>
+					<?php
+						if(isset($_SESSION['user_id'])){
+							echo '<a href="includes/logout.php">Logout</a>';
+						}
+					?>
 				</div>
 
 				<div class="doubling ui padded grid">
@@ -114,10 +119,8 @@
 						<div class="mobile only sixteen wide column">
 							<div class="ui search">
 								<div class="ui fluid icon input">
-									<form method="GET" action="search.php" class="ui icon input">
-										<input type="text" name="q" placeholder="Search..." class="prompt">
-										<i class="search icon"><input type="submit" value="" style="display: none;"></i>
-									</form>
+									<input type="text" name="search" placeholder="Search..." class="prompt">
+									<i class="search icon"></i>
 								</div>
 								<div class="results"></div>
 							</div>
@@ -142,10 +145,8 @@
 						<div class=" tablet only computer only right floated right aligned column">
 							<div class="ui search">
 								<div class="ui icon input">
-									<form method="GET" action="search.php" class="ui icon input">
-										<input type="text" name="q" placeholder="Search..." class="prompt">
-										<i class="search icon"><input type="submit" value="" style="display: none;"></i>
-									</form>
+									<input type="text" name="search" placeholder="Search..." class="prompt">
+									<i class="search icon"></i>
 								</div>
 								<div class="results"></div>
 							</div>
@@ -171,13 +172,16 @@
 			
 							<div class="right floated right aligned four wide computer five wide tablet column computer only tablet only">
 								<ul class="nav">
-									<li class="nav-item"><a href="login.php" class="nav-link">Account</a></li>
+									<li class="nav-item"><a href="login.php" class="nav-link">ACCOUNT</a></li>
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
+									<?php
+										if(isset($_SESSION['user_id'])){
+											echo '<li class="nav-item"><a href="includes/logout.php" class="nav-link">Logout</a></li>';
+										}
+									?>
 								</ul>		
 							</div>
 						</div>
 					</div>
 				</div>
 			</nav>
-
-
