@@ -1,8 +1,10 @@
 <?php
+
 	DEFINE ('DB_USER','am921588');
 	DEFINE ('DB_PASSWORD','BBin2018!');
 	DEFINE ('DB_HOST','localhost');
 	DEFINE ('DB_NAME','am921588');
+
 	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die(mysql_error());
 	mysqli_set_charset($dbc, 'uft8');
 	// Function for escaping and trimming form data.
