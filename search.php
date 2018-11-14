@@ -117,7 +117,7 @@ if (isset($_GET['page'])) {
                           </div>
                           <div class='content'>
                             <div class='header'>
-                              ".$row["prodName"]."
+                              <a href='product.php?id=".$row["PK"]."'>".$row["prodName"]."</a>
                             </div>
                             <div class='description'>
                               ".$row["prodBrand"]."
@@ -125,8 +125,10 @@ if (isset($_GET['page'])) {
                             </div>
                           </div>
                           <div class='ui bottom attached button'>
-                            <i class='add icon'></i>
-                            Add to Cart
+                            <a href='product.php?id=".$row["PK"]."' style='color: #747576;'>
+                                <i class='add icon'></i>
+                                Add to Cart
+                            </a>
                           </div>
                         </div>
                       ";
