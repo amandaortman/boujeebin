@@ -1,6 +1,6 @@
 <?php
 include('includes/db.php');
-include('includes/header.html');
+include('includes/header.php');
 ?>
 
         <div class="ui container full-basic-segment">
@@ -163,9 +163,23 @@ include('includes/header.html');
         </div>
 
 
-		<div id="footer-style" class="ui container fluid footer-style">
+			<div id="footer-style" class="ui container fluid footer-style">
+			<div class="center aligned one column stackable ui grid sign-up">
+			<div class="eight wide column">
+				<h4>Sign up for the Boujee Bin Bulletin</h4>
+				<form class="ui form">
+					<div class="field">
+						<div class="ui action input">
+							<input type="email" name="email" placeholder="E-mail address">
+							<button class="ui button">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 			<footer class="ui container basic segment">
-                <?php include('includes/footer.html'); ?>
+				<?php include('includes/footer.html'); ?>
+		
 
                 <!--Stripe API-->
                 <script src="https://js.stripe.com/v3/"></script>
