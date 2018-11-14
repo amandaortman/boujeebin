@@ -43,6 +43,7 @@
 	<meta content="width=device-width" name="viewport" />
 	<meta content="yes" name="apple-mobile-web-app-capable" />
 	<meta content="yes" name="apple-touch-fullscreen" />
+	<meta name='robots' content='noindex,nofollow' /> <!-- remove after launch --> 
 
 	<link rel="icon" href=<?php echo $ico ?> type="image/x-icon" />
 	<link rel="shortcut icon" href=<?php echo $ico ?> />
