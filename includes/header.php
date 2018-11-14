@@ -180,9 +180,9 @@
 								<ul class="nav">
 									<?php
 										if(isset($_SESSION['user_id'])){
-											echo '<li class="nav-item"><a href="client.php">Account</a></li>';
+											echo '<li class="nav-item"><a href="client.php" class="nav-link">Account</a></li>';
 										} else {
-											echo '<li class="nav-item"><a href="login.php>Account</a></li>';
+											echo '<li class="nav-item"><a href="login.php" class="nav-link">Account</a></li>';
 										}
 									?>
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>

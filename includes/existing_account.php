@@ -45,14 +45,22 @@
             //else if is done to be extra sure user only logs in if password matches
             //$_SESSION['logged_in'] = $row['id'];
             $_SESSION['user_id'] = $row['email'];  //switch to ID once ID situation is figured out
+            $_SESSION['type'] = $row['type'];
             $_SESSION['first'] = $row['first_name'];
             $_SESSION['last'] = $row['last_name'];
             $_SESSION['user'] = $row['username'];
             $_SESSION['pass'] = $pass;
             $_SESSION['email'] = $row['email'];
             //redirect to profile
-            header("Location: ../client.php");
-            exit();
+            if(isset($_SESSION['user_id'])) {
+              if(isset($_SESSION['type'])=='admin'){
+                  header('Location: ../admin.php');
+                  exit();
+              } else {
+                  header('Location: ../client.php');
+                  exit();
+              }
+            }
           }
         }
       }
