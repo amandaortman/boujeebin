@@ -84,7 +84,13 @@
 					<a href="catalog.php?page=new">New Arrivals</a>
 					<a href="catalog.php?page=mens">Mens</a>
 					<a href="catalog.php?page=womens">Womens</a>
-					<a href="login.php">Account</a>
+					<?php
+						if(isset($_SESSION['user_id'])){
+							echo '<a href="client.php">Account</a>';
+						} else {
+							echo '<a href="login.php">Account</a>';
+						}
+					?>
 					<a href="cart.php">Cart</a>
 					<?php
 						if(isset($_SESSION['user_id'])){
@@ -172,7 +178,13 @@
 			
 							<div class="right floated right aligned four wide computer five wide tablet column computer only tablet only">
 								<ul class="nav">
-									<li class="nav-item"><a href="login.php" class="nav-link">ACCOUNT</a></li>
+									<?php
+										if(isset($_SESSION['user_id'])){
+											echo '<li class="nav-item"><a href="client.php">Account</a></li>';
+										} else {
+											echo '<li class="nav-item"><a href="login.php>Account</a></li>';
+										}
+									?>
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
 									<?php
 										if(isset($_SESSION['user_id'])){
