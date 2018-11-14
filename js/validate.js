@@ -7,7 +7,7 @@ $('.ui')
         identifier: 'fname',
         rules: [
           {
-            type   : 'regExp[^([a-zA-Z]\'*-* ?){1,20}$]',
+            type   : 'regExp[/^([a-zA-Z]\'*-*.* ?){1,20}$/]',
             prompt : 'Please enter a valid first name'
           }
         ]
@@ -16,7 +16,7 @@ $('.ui')
         identifier: 'lname',
         rules: [
           {
-            type   : 'regExp[^([a-zA-Z]\'*-* ?){2,20}$]',
+            type   : 'regExp[/^([a-zA-Z]\'*-*.* ?){2,20}$/]',
             prompt : 'Please enter a valid last name'
           }
         ]
@@ -25,7 +25,7 @@ $('.ui')
         identifier: 'uid',
         rules: [
           {
-            type   : 'regExp[/^[a-z0-9_-]{4,16}$/]',
+            type   : 'regExp[/^[A-Za-z0-9_-]{4,16}$/]',
             prompt : 'Please enter a 4-16 letter username'
           }
         ]
@@ -34,7 +34,9 @@ $('.ui')
         identifier: 'pwd',
         rules: [
           {
-            type  : 'regExp[^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d])([^\s]){8,16}$]',
+            //type  : 'regExp[/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d])([^\s]){8,20}$/]',
+            type: 'regExp',
+            value: /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d])([^\s]){8,20}$/,
             prompt  : 'Password must contain 1 uppercase and lowercase letter, 1 number, and be 8-20 characters long.'
           }
         ]

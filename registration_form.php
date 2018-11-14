@@ -1,7 +1,6 @@
 <?php
-	session_start();
 	include('includes/db.php');
-	include('includes/header.html');
+	include('includes/header.php');
 ?>
 
 	<div class="ui container full-basic-segment">
@@ -54,7 +53,7 @@
 							</div>
 
 						    <div class="field">
-						    	<button class="blue ui button" form="registration_form" name="submit" type="submit">Submit</button>
+						    	<button class="blue ui button" form="registration_form" name="submit">Submit</button>
 						    </div>
 						</form>
 					</div>
@@ -69,5 +68,5 @@
 		</footer>
 	</div>
 
-	<!--script src="validate.js"></script-->
+	<script src="js/validate.js"></script>
 </body>

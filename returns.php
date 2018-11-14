@@ -1,7 +1,7 @@
 <?php
 //include('includes/config.php');
 include('includes/db.php');
-include('includes/header.html');
+include('includes/header.php');
 ?>
 		<div class="ui container full-basic-segment">
 			<div class="ui grid">
