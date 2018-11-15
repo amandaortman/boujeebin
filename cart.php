@@ -1,24 +1,25 @@
 <?php
+session_start();
 include('includes/db.php');
 include('includes/header.php');
 ?>
 
 		<div class="ui container full-basic-segment">
 
-			<div class="ui container">
+			<div class="ui container" id="cart_checkout_div">
 
 
 				<div class="ui grid">
 					<div class="one column row">
 						<div class="sixteen wide column">
 
-							<h3 class="ui header">Your Shopping Cart (3)</h3>
+							<h3 class="ui header">Your Shopping Cart (<?php if (isset($_SESSION['cart_count'])) { echo $_SESSION['cart_count']; } else {echo "0"; }?>)</h3>
 
-							<div class="ui positive message">
+							<!--<div class="ui positive message">
 								<p>Add $23.53 more to your cart for free shipping!</p>
-							</div>	
+							</div>-->	
 
-							<div class="ui divider"></div>
+							<div class="ui divider"></div>					
 						</div>						
 					</div>
 				</div>
@@ -55,93 +56,20 @@ include('includes/header.php');
 	
 
 				<div class="ui grid">
-					<!--ONE ITEM-->
-					<div class="one column row">
-						<div class="column">					
-							<div class="ui grid">
-								<div class="four column row computer only">
-									<div class="middle aligned left aligned eight wide computer column computer only">
-										<div class="ui divided items">
-											<div class="item">
-												<div class="image">
-													<img src="https://via.placeholder.com/500x450">
-												</div>
-												<div class="content">
-													<a class="header">Product Name</a>
-													<div class="description">
-														<p>Product Description</p>
-														<p>Product Color</p>
-														<p>Product Size</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+			
+					<?php include("./includes/cart_items.php");?>
+					<?php
+					if(isset($_SESSION['total_cart_price'])) {
+						//var_dump($_SESSION['total_cart_price']);
 
-									<div class="middle aligned center aligned two wide computer column computer only">
-										<span class="ui header">$20</span>
-									</div>
+						$sess_cart = $_SESSION['total_cart_price'];
 
-									<div class="middle aligned center aligned two wide computer column computer only">										
-										<i class="minus icon q-cart"></i><span class="ui header"> 2 </span><i class="plus icon q-cart"></i>										
-									</div>
+						$complete_total = array_sum($sess_cart);
 
-									<div class="middle aligned center aligned two wide computer column computer only">
-										<span class="ui header">$40</span>
-									</div>
-									
-									<div class="middle aligned right aligned two wide computer column computer only">
-										<i class="close icon"></i>
-									</div>	
-
-								</div>
-
-
-								<!--MOBILE/TABLET-->
-								<div class="one column row mobile only tablet only">
-									<div class="middle aligned left aligned sixteen wide column mobile only tablet only">
-										<div class="ui divided items">
-											<div class="item">
-												<div class="image">
-													<img src="https://via.placeholder.com/500x450">
-												</div>
-												<div class="content">
-													<a class="header">Product Name</a>
-													<div class="description">
-														<p>Product Description</p>
-														<p>Product Color</p>
-														<p>Product Size</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="one column row mobile only tablet only">
-									<div class="middle aligned center aligned sixteen wide computer column">
-									<span class="ui header">Item Price: </span><span class="ui header">$20</span>
-									</div>
-
-									<div class="middle aligned center aligned sixteen wide computer column">										
-										<i class="minus icon q-cart"></i><span class="ui header"> 2 </span><i class="plus icon q-cart"></i>										
-									</div>
-
-									<div class="middle aligned center aligned sixteen wide computer column">
-										<span class="ui header">Item Total: </span><span class="ui header">$40</span>
-									</div>		
-
-									<div class="middle aligned right aligned sixteen wide computer column">
-										<br>
-										<button class="ui fluid button">Remove Item</button>
-									</div>	
-								</div>
-							</div>
-						</div>
-					</div>	
-					<div class="ui divider"></div><!--END ITEM-->
-
-
+						
+					}
+					
+					?>
 
 				</div>
 
@@ -151,14 +79,24 @@ include('includes/header.php');
 					<div class="one column row">
 						<div class="right aligned column">
 							<div class="ui basic segment">
-								<span>Tax</span>: <span>$3.99</span><br>
-								<span>Shipping</span>: <span>$3.99</span><br>
-								<span>Subtotal</span>: <span>$42.15</span>
+								<span>Tax</span>: <span><?php if(!isset($_SESSION['total_cart_price'])) { echo "0";} else { $total_with_tax = ($complete_total * 0.06); echo $total_with_tax;} ?></span><br>
+								<span>Shipping</span>: <span><?php 
+								if ((isset($complete_total)) && $complete_total > 50) {
+										  echo "Free";
+										} else {
+											echo "$3.99"; 
+										}
+									  
+									  ?></span><br>
+								<span>Subtotal</span>: <span>$ <?php if (!isset($_SESSION['cart_count'])) { echo "0"; } else { $_SESSION['cart_end_total'] = ($complete_total + $total_with_tax); echo $_SESSION['cart_end_total']; } ?></span>
 							</div>
 						</div>
 					</div>
 
-					<div class="one column row">
+					<div class="two column row">
+						<div class="left aligned column">
+							<a href="includes/clear_cart.php"><button class="ui red button clearCheckout">Clear Checkout</button></a>
+						</div>
 						<div class="right aligned column">
 							<a href="checkout.php"><button class="ui primary button">Proceed to Checkout</button></a>
 						</div>

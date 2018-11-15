@@ -177,6 +177,14 @@ ul.nav {
     display: inline-block;
 }
 
+a.productImageLink {
+    color: black;
+}
+
+.header a.productImageLink {
+    color: black;
+}
+
 
 
 

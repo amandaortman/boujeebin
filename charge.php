@@ -9,9 +9,7 @@ require_once('./stripe-php/init.php');
 
 // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
-
-//ADD STRIPE KEY
-\Stripe\Stripe::setApiKey("");
+\Stripe\Stripe::setApiKey("sk_test_7RvSmX5HQLx8a5U2xIpGiABD");
 
 // Token is created using Checkout or Elements!
 // Get the payment token ID submitted by the form:
@@ -31,7 +29,7 @@ $billingCountry = $_POST['address_country'];
 //CHANGE ONCE CHECKOUT CART COMPLETE
 //update according to cart
 //$total = $_SESSION['total_price'];
-$total = 59.99;
+$total = $_SESSION['cart_end_total'];
 $total = $total * 100;
 //example $total = 2099;
 

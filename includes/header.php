@@ -3,6 +3,7 @@
 <?php session_start(); ?>
 	<head>
 
+
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129205961-1"></script>
 <script>
@@ -12,6 +13,7 @@
 
   gtag('config', 'UA-129205961-1');
 </script>
+
 
 	<?php 
 
@@ -43,7 +45,9 @@
 	<meta content="width=device-width" name="viewport" />
 	<meta content="yes" name="apple-mobile-web-app-capable" />
 	<meta content="yes" name="apple-touch-fullscreen" />
+
 	<meta name='robots' content='noindex,nofollow' /> <!-- remove after launch --> 
+
 
 	<link rel="icon" href=<?php echo $ico ?> type="image/x-icon" />
 	<link rel="shortcut icon" href=<?php echo $ico ?> />
@@ -97,6 +101,7 @@
 					<a href="catalog.php?page=womens">Womens</a>
 					<a href="login.php">Account</a>
 					<a href="cart.php">Cart</a>
+
 					<?php
 						if(isset($_SESSION['user_id'])){
 							echo '<a href="includes/logout.php">Logout</a>';
@@ -182,9 +187,15 @@
 							</div>
 			
 							<div class="right floated right aligned four wide computer five wide tablet column computer only tablet only">
+<<<<<<< HEAD
+								<ul class="nav"  id="desktopCart">
+									<li class="nav-item"><a href="login.php" class="nav-link">ACCOUNT</a></li>
+									<li class="nav-item"><a href="cart.php" class="nav-link">Cart<span class="<?php if (!isset($_SESSION['cart_count'])) { echo "hidden content"; }?> floating ui tiny black label"><?php if (isset($_SESSION['cart_count'])) { echo $_SESSION['cart_count']; }?></span></a></li>
+=======
 								<ul class="nav">
 									<li class="nav-item"><a href="login.php" class="nav-link">ACCOUNT</a></li>
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
+>>>>>>> merge
 									<?php
 										if(isset($_SESSION['user_id'])){
 											echo '<li class="nav-item"><a href="includes/logout.php" class="nav-link">Logout</a></li>';
@@ -195,4 +206,9 @@
 						</div>
 					</div>
 				</div>
+<<<<<<< HEAD
 			</nav>
+	
+=======
+			</nav>
+>>>>>>> merge
