@@ -1,10 +1,11 @@
 <?php
+session_start();
 if(isset($_SESSION['user_id'])) {
-    header('Location: account.php');
+    header('Location: client.php');
 }
 
 include('includes/db.php');
-include('includes/header.html');
+include('includes/header.php');
 ?>
 
 		<div class="ui container full-basic-segment">
@@ -14,31 +15,42 @@ include('includes/header.html');
                     <div class="ui basic segment">
                         <div class="ui two column very relaxed stackable grid">
                             <div class="column">
-                                <div class="ui form">
-                                    <div class="field">
+                                <form class="ui form" action="includes/existing_account.php" method="POST">
                                       <h3 class="ui header">Login</h3>
-                                    </div>
+                                      <?php
+                                        if (isset($_SESSION['user_error'])) {   
+                                            echo '<div class="ui basic red error message visible">' . $_SESSION['user_error'] . '</div>';
+                                            unset($_SESSION['user_error']);
+                                        }
+                                      ?>
                                     <div class="field">
                                         <label>Username</label>
                                         <div class="ui left icon input">
-                                            <input type="text" placeholder="Username">
+                                            <input name="uid" type="text" placeholder="Username" value="<?php if(isset($_SESSION['temp_user'])){
+                                                echo $_SESSION['temp_user'];unset($_SESSION['temp_user']);}
+                                                else if(isset($_SESSION['temp_user_mobile'])){
+                                                    $_SESSION['temp_user']=$_SESSION['temp_user_mobile'];
+                                                    echo $_SESSION['temp_user'];
+                                                    unset($_SESSION['temp_user']);
+                                                }
+                                                ?>">
                                             <i class="user icon"></i>
                                         </div>
                                     </div>
                                     <div class="field">
                                         <label>Password</label>
                                         <div class="ui left icon input">
-                                            <input type="password">
+                                            <input name="pwd" type="password" placeholder="Password">
                                             <i class="lock icon"></i>
                                         </div>
                                     </div>
                                     <div class="field">
-                                        <div class="ui blue submit button"><a href="client.php">Login</a></div>
+                                        <button class="ui blue submit button" name="submit">Login</button>
                                     </div>
                                     <div class="field">
                                         <a href="#">Forgot your password?</a>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                             <div class="column">
                                 <div class="ui form">
@@ -57,7 +69,7 @@ include('includes/header.html');
                                         </ul>
                                     </div>        
                                     <div class="field">
-                                        <div class="ui blue submit button"><a href="#">Sign Up</a></div>
+                                        <button class="ui blue submit button"><a href="registration_form.php">Sign Up</a></button>
                                     </div>
                                 </div>
                             </div>
@@ -73,31 +85,41 @@ include('includes/header.html');
             <div class="ui grid">
                 <div class="mobile only column">
                     <div class="ui left aligned basic segment">
-                        <div class="ui form">
-                            <div class="field">
-                                <h3 class="ui header">Login</h3>
-                            </div>                            
+                        <form class="ui form" action="includes/existing_account.php" method="POST">
+                            <h3 class="ui header">Login</h3> 
+                            <?php
+                                if (isset($_SESSION['user_error_mobile'])) {   
+                                    echo '<div class="ui basic red error message visible">' . $_SESSION['user_error_mobile'] . '</div>';
+                                    unset($_SESSION['user_error_mobile']);
+                                }
+                              ?>
                             <div class="field">
                                 <label>Username</label>
                                 <div class="ui left icon input">
-                                    <input type="text" placeholder="Username">
+                                    <input name="uid" type="text" placeholder="Username" value="<?php if(isset($_SESSION['temp_user_mobile'])){
+                                        echo $_SESSION['temp_user_mobile'];unset($_SESSION['temp_user_mobile']);}
+                                        else if(isset($_SESSION['temp_user'])){
+                                            $_SESSION['temp_user_mobile']=$_SESSION['temp_user'];
+                                            echo $_SESSION['temp_user_mobile'];
+                                            unset($_SESSION['temp_user_mobile']);}
+                                        ?>">
                                     <i class="user icon"></i>
                                 </div>
                             </div>
                             <div class="field">
                                 <label>Password</label>
                                 <div class="ui left icon input">
-                                    <input type="password">
+                                    <input name="pwd" type="password" placeholder="Password">
                                     <i class="lock icon"></i>
                                 </div>
                             </div>
                             <div class="field">
-                                <div class="ui blue submit button"><a href="client.php">Login</a></div>
+                                <button class="ui blue submit button" name="submit">Login</button>
                             </div>
                             <div class="field">
                                 <a href="#">Forgot your password?</a>
                             </div>
-                        </div>
+                        </form>
 
                         <div class="ui horizontal divider">
                             Or
@@ -120,7 +142,7 @@ include('includes/header.html');
                                     </ul>
                                 </div>        
                                 <div class="field">
-                                    <div class="ui blue submit button"><a href="#">Sign Up</a></div>
+                                    <button class="ui blue submit button"><a href="registration_form.php">Sign Up</a></button>
                                 </div>
                             </div>
                         </div>
@@ -131,10 +153,25 @@ include('includes/header.html');
 
 		</div>
 
-		<div id="footer-style" class="ui container fluid footer-style">
+			<div id="footer-style" class="ui container fluid footer-style">
+			<div class="center aligned one column stackable ui grid sign-up">
+			<div class="eight wide column">
+				<h4>Sign up for the Boujee Bin Bulletin</h4>
+				<form class="ui form">
+					<div class="field">
+						<div class="ui action input">
+							<input type="email" name="email" placeholder="E-mail address">
+							<button class="ui button">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 			<footer class="ui container basic segment">
 				<?php include('includes/footer.html'); ?>
 			</footer>
 		</div>
+
+        <script src="js/validate.js"></script>
 	</body><!--end body-->
 </html>
