@@ -17,7 +17,7 @@
       exit();
     } else {
       //Prevent accepting invalid code
-      if(!preg_match("/^[A-Za-z0-9_-]{4,16}$/", $user) || !preg_match("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d])([^\s]){8,16}$/", $pass)) {
+      if(!preg_match("/^[A-Za-z0-9_-]{4,16}$/", $user) || !preg_match("/^(?=.*(\d|[^\w]))(?=.*\w)([^\s]){8,20}$/", $pass)) {
         header("Location: ../login.php?signup=invalid");
         $_SESSION['user_error'] = "Please enter a valid username and password.";
         $_SESSION['user_error_mobile'] = "Please enter a valid username and password.";
@@ -53,7 +53,7 @@
             $_SESSION['email'] = $row['email'];
             //redirect to profile
             if(isset($_SESSION['user_id'])) {
-              if(isset($_SESSION['type'])=='admin'){
+              if($_SESSION['type']=='admin'){
                   header('Location: ../admin.php');
                   exit();
               } else {
