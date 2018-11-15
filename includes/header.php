@@ -3,6 +3,18 @@
 <?php session_start(); ?>
 	<head>
 
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129205961-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129205961-1');
+</script>
+
+
 	<?php 
 
 			$title = 'Boujee Bin';
@@ -33,6 +45,9 @@
 	<meta content="width=device-width" name="viewport" />
 	<meta content="yes" name="apple-mobile-web-app-capable" />
 	<meta content="yes" name="apple-touch-fullscreen" />
+
+	<meta name='robots' content='noindex,nofollow' /> <!-- remove after launch --> 
+
 
 	<link rel="icon" href=<?php echo $ico ?> type="image/x-icon" />
 	<link rel="shortcut icon" href=<?php echo $ico ?> />
@@ -84,8 +99,19 @@
 					<a href="catalog.php?page=new">New Arrivals</a>
 					<a href="catalog.php?page=mens">Mens</a>
 					<a href="catalog.php?page=womens">Womens</a>
-					<a href="login.php">Account</a>
+					<?php
+						if(isset($_SESSION['user_id'])){
+							if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+								echo '<a href="admin.php">Account</a>';
+							} else {
+								echo '<a href="client.php">Account</a>';
+							}
+						} else {
+							echo '<a href="login.php">Account</a>';
+						}
+					?>
 					<a href="cart.php">Cart</a>
+
 					<?php
 						if(isset($_SESSION['user_id'])){
 							echo '<a href="includes/logout.php">Logout</a>';
@@ -171,9 +197,25 @@
 							</div>
 			
 							<div class="right floated right aligned four wide computer five wide tablet column computer only tablet only">
-								<ul class="nav">
+<<<<<<< HEAD
+								<ul class="nav"  id="desktopCart">
 									<li class="nav-item"><a href="login.php" class="nav-link">ACCOUNT</a></li>
+									<li class="nav-item"><a href="cart.php" class="nav-link">Cart<span class="<?php if (!isset($_SESSION['cart_count'])) { echo "hidden content"; }?> floating ui tiny black label"><?php if (isset($_SESSION['cart_count'])) { echo $_SESSION['cart_count']; }?></span></a></li>
+=======
+								<ul class="nav">
+									<?php
+										if(isset($_SESSION['user_id'])){
+											if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+              									echo '<li class="nav-item"><a href="admin.php" class="nav-link">Account</a></li>';
+              								} else {
+              									echo '<li class="nav-item"><a href="client.php" class="nav-link">Account</a></li>';
+              								}
+										} else {
+											echo '<li class="nav-item"><a href="login.php" class="nav-link">Account</a></li>';
+										}
+									?>
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
+>>>>>>> merge
 									<?php
 										if(isset($_SESSION['user_id'])){
 											echo '<li class="nav-item"><a href="includes/logout.php" class="nav-link">Logout</a></li>';
@@ -184,4 +226,9 @@
 						</div>
 					</div>
 				</div>
+<<<<<<< HEAD
 			</nav>
+	
+=======
+			</nav>
+>>>>>>> merge

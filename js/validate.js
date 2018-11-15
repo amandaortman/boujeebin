@@ -36,8 +36,8 @@ $('.ui')
           {
             //type  : 'regExp[/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d])([^\s]){8,20}$/]',
             type: 'regExp',
-            value: /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d])([^\s]){8,20}$/,
-            prompt  : 'Password must contain 1 uppercase and lowercase letter, 1 number, and be 8-20 characters long.'
+            value: /^(?=.*(\d|[^\w]))(?=.*\w)([^\s]){8,20}$/,
+            prompt  : 'Password must contain 1 number or non-alphanumeric character and be 8-20 characters long.'
           }
         ]
       },

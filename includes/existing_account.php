@@ -17,7 +17,7 @@
       exit();
     } else {
       //Prevent accepting invalid code
-      if(!preg_match("/^[A-Za-z0-9_-]{4,16}$/", $user) || !preg_match("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d])([^\s]){8,16}$/", $pass)) {
+      if(!preg_match("/^[A-Za-z0-9_-]{4,16}$/", $user) || !preg_match("/^(?=.*(\d|[^\w]))(?=.*\w)([^\s]){8,20}$/", $pass)) {
         header("Location: ../login.php?signup=invalid");
         $_SESSION['user_error'] = "Please enter a valid username and password.";
         $_SESSION['user_error_mobile'] = "Please enter a valid username and password.";
@@ -45,14 +45,22 @@
             //else if is done to be extra sure user only logs in if password matches
             //$_SESSION['logged_in'] = $row['id'];
             $_SESSION['user_id'] = $row['email'];  //switch to ID once ID situation is figured out
+            $_SESSION['type'] = $row['type'];
             $_SESSION['first'] = $row['first_name'];
             $_SESSION['last'] = $row['last_name'];
             $_SESSION['user'] = $row['username'];
             $_SESSION['pass'] = $pass;
             $_SESSION['email'] = $row['email'];
             //redirect to profile
-            header("Location: ../client.php");
-            exit();
+            if(isset($_SESSION['user_id'])) {
+              if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+                  header('Location: ../admin.php');
+                  exit();
+              } else {
+                  header('Location: ../client.php');
+                  exit();
+              }
+            }
           }
         }
       }
