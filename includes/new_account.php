@@ -31,7 +31,7 @@
       exit();
     } else {
       //check if input is valid
-      if(!preg_match("/^([a-zA-Z]'*-*.* ?){1,20}$/", $first) || !preg_match("/^([a-zA-Z]'*-*.* ?){2,20}$/", $last) || !preg_match("/^[A-Za-z0-9_-]{4,16}$/", $user) || !preg_match("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d])([^\s]){8,20}$/", $pass)) {
+      if(!preg_match("/^([a-zA-Z]'*-*.* ?){1,20}$/", $first) || !preg_match("/^([a-zA-Z]'*-*.* ?){2,20}$/", $last) || !preg_match("/^[A-Za-z0-9_-]{4,16}$/", $user) || !preg_match("/^(?=.*(\d|[^\w]))(?=.*\w)([^\s]){8,20}$/", $pass)) {
         header("Location: ../registration_form.php?signup=invalid");
         $_SESSION['user_error'] = "Please double-check what you typed into your fields.";
         exit();
@@ -54,8 +54,9 @@
           } else {
             //Hashing the password
             $hashedPwd = password_hash($pass, PASSWORD_DEFAULT);
+
             //Insert user into db
-            $sql = "INSERT INTO bb_users(first_name, last_name, username, password, email) VALUES ('$first', '$last', '$user', '$hashedPwd', '$email')";
+            $sql = "INSERT INTO bb_users(customer_id, type, first_name, last_name, username, password, email) VALUES('$email', 'client', $first', '$last', '$user', '$hashedPwd', '$email')";
             mysqli_query($dbc, $sql);
             header("Location: ../login.php");
             exit();

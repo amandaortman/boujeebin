@@ -99,7 +99,17 @@
 					<a href="catalog.php?page=new">New Arrivals</a>
 					<a href="catalog.php?page=mens">Mens</a>
 					<a href="catalog.php?page=womens">Womens</a>
-					<a href="login.php">Account</a>
+					<?php
+						if(isset($_SESSION['user_id'])){
+							if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+								echo '<a href="admin.php">Account</a>';
+							} else {
+								echo '<a href="client.php">Account</a>';
+							}
+						} else {
+							echo '<a href="login.php">Account</a>';
+						}
+					?>
 					<a href="cart.php">Cart</a>
 
 					<?php
@@ -193,7 +203,17 @@
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart<span class="<?php if (!isset($_SESSION['cart_count'])) { echo "hidden content"; }?> floating ui tiny black label"><?php if (isset($_SESSION['cart_count'])) { echo $_SESSION['cart_count']; }?></span></a></li>
 =======
 								<ul class="nav">
-									<li class="nav-item"><a href="login.php" class="nav-link">ACCOUNT</a></li>
+									<?php
+										if(isset($_SESSION['user_id'])){
+											if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+              									echo '<li class="nav-item"><a href="admin.php" class="nav-link">Account</a></li>';
+              								} else {
+              									echo '<li class="nav-item"><a href="client.php" class="nav-link">Account</a></li>';
+              								}
+										} else {
+											echo '<li class="nav-item"><a href="login.php" class="nav-link">Account</a></li>';
+										}
+									?>
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
 >>>>>>> merge
 									<?php
