@@ -65,7 +65,7 @@ include('header.php');
       echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodSale\" value=\"" . $row['prodSale'] . "\" size=\"6\" maxlength=\"20\"></div></td>";
       echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodPrice\" value=\"" . $row['prodPrice'] . "\" size=\"6\" maxlength=\"20\"></div></td>";
       if(isset($_SESSION['type'])=='admin'){
-        echo "<td class=\"center aligned\"><i class=\"close icon\"></i></td>";  //remove products
+        echo "<td class=\"center aligned\"><a href=\"delete_product.php?id=" . $id . "\"><i class=\"close icon\"></i></a></td>";  //remove products
       }
 
       echo "</tr>";
