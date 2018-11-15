@@ -65,7 +65,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<td>" . $row['prodSale'] . "</td>";
 	echo "<td>" . $row['prodPrice'] . "</td>";
     if(isset($_SESSION['type'])=='admin'){
-	  echo "<td class=\"center aligned\"><i class=\"close icon\"></i></td>";  //remove products
+	  echo "<td class=\"center aligned\"><a href=\"includes/delete_product.php?id=" . $id . "\"><i class=\"close icon\"></i></a></td>";  //remove products
 	}
 
     echo "</tr>";
