@@ -21,10 +21,6 @@ include('header.php');
 
           <div class="one column row">
             <div class="column">
-              <!--div class="ui top attached tabular menu">
-                <a class="item active" data-tab="catalog">Catalog</a>
-                <a class="item" data-tab="orders">Customer Orders</a>
-              </div-->
 
               <!-- CATALOG -->
               <div class="ui bottom attached tab segment active" data-tab="catalog">
@@ -58,12 +54,19 @@ include('header.php');
       echo "<td>" . $row['PK'] . "</td>";
       echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodName\" value=\"" . $row['prodName'] . "\"></div></td>";
       echo "<td><select class=\"ui fluid search dropdown\" name=\"prodBrand\" value=\"" . $row['prodBrand'] . 
-      "\"><option value=\"Hugo Boss\">Hugo Boss</option><option value=\"Valentino\">Valentino</option><option value=\"Ben Taverniti\">Ben Taverniti</option><option value=\"Hermes\">Hermes</option><option value=\"Saint Laurent\">Saint Laurent</option><option value=\"Burberry\">Burberry</option></td>";
+        "\"><option value=\"Hugo Boss\">Hugo Boss</option>
+        <option value=\"Valentino\">Valentino</option>
+        <option value=\"Ben Taverniti\">Ben Taverniti</option>
+        <option value=\"Hermes\">Hermes</option>
+        <option value=\"Saint Laurent\">Saint Laurent</option>
+        <option value=\"Burberry\">Burberry</option></td>";
       echo "<td>" . $row['prodSKU'] . "</td>";
       echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodStock\" value=\"" . $row['prodStock'] . "\" size=\"3\" maxlength=\"3\"></div></td>";
       echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodSale\" value=\"" . $row['prodSale'] . "\" size=\"6\" maxlength=\"20\"></div></td>";
       echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodPrice\" value=\"" . $row['prodPrice'] . "\" size=\"6\" maxlength=\"20\"></div></td>";
-      echo "<td class=\"center aligned\"><i class=\"close icon\"></i></td>";  //DELETIONS GO HERE
+      if(isset($_SESSION['type'])=='admin'){
+        echo "<td class=\"center aligned\"><i class=\"close icon\"></i></td>";  //remove products
+      }
 
       echo "</tr>";
     }

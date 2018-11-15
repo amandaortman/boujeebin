@@ -64,7 +64,9 @@ if (mysqli_num_rows($result) > 0) {
     echo "<td><div class=\"ui input\"><input type=\"text\" value=\"" . $row['prodStock'] . "\"></div></td>";
     echo "<td>" . $row['prodSale'] . "</td>";
 	echo "<td>" . $row['prodPrice'] . "</td>";
-    echo "<td class=\"center aligned\"><i class=\"close icon\"></i></td>";  //DELETIONS GO HERE
+    if(isset($_SESSION['type'])=='admin'){
+	  echo "<td class=\"center aligned\"><i class=\"close icon\"></i></td>";  //remove products
+	}
 
     echo "</tr>";
     }
@@ -77,8 +79,11 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($dbc);
 
 ?>			
-
-
+					<div class="ui one column centered grid">
+						<div class="row">
+							<button class="black ui submit button" name="add"><a href="includes/add_product.php">Add Product</a></button>
+						</div>
+					</div>
 
 							
 							</div>

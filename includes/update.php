@@ -22,7 +22,7 @@ include('db.php');
       exit();
     }else {
       header("Location: ../admin.php?update=failure");
-      $_SESSION['user_error'] = "Unable to update profile.";
+      //$_SESSION['user_error'] = "Unable to update profile.";
       unset($id);
       exit();
     }
