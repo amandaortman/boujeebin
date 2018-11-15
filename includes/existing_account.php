@@ -53,7 +53,7 @@
             $_SESSION['email'] = $row['email'];
             //redirect to profile
             if(isset($_SESSION['user_id'])) {
-              if($_SESSION['type']=='admin'){
+              if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
                   header('Location: ../admin.php');
                   exit();
               } else {
