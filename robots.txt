@@ -1,0 +1,4 @@
+# Change to allow once launched
+
+User-agent: *
+Disallow: /
