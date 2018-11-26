@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+	}
+?>
 	<head>
 
-	<?php 
 
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129205961-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-129205961-1');
+</script>
+
+
+	<?php 
 			$title = 'Boujee Bin';
 			$description = 'Designer Brands at Discount Prices';
 			$url = 'https://url.com';
 			$keywords = 'designer, brands, discounts, clothing, fashion, apparel, womens fashion, mens fashion, discount fashion, bargains, fashion deals, fashion discounts, gucci, louis  vuitton, fendi, prada, kate spade, steve madden, ferragamo, salvatore ferragamo';
 			$share = 'img/share.png';
 			$ico = 'img/favicon.ico';
-
 		?>
 
 		<title><?php echo $title ?></title>
@@ -19,7 +34,6 @@
 			@import url('./css/reset.css');
 			@import url('./css/styles.css');
 			@import url('https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css');
-
 			@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR:600,700,900');
 			@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 		</style>
@@ -33,6 +47,9 @@
 	<meta content="width=device-width" name="viewport" />
 	<meta content="yes" name="apple-mobile-web-app-capable" />
 	<meta content="yes" name="apple-touch-fullscreen" />
+
+	<meta name='robots' content='noindex,nofollow' /> <!-- remove after launch --> 
+
 
 	<link rel="icon" href=<?php echo $ico ?> type="image/x-icon" />
 	<link rel="shortcut icon" href=<?php echo $ico ?> />
@@ -84,8 +101,24 @@
 					<a href="catalog.php?page=new">New Arrivals</a>
 					<a href="catalog.php?page=mens">Mens</a>
 					<a href="catalog.php?page=womens">Womens</a>
-					<a href="login.php">Account</a>
+					<?php
+						if(isset($_SESSION['user_id'])){
+							if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+								echo '<a href="admin.php">Account</a>';
+							} else {
+								echo '<a href="client.php">Account</a>';
+							}
+						} else {
+							echo '<a href="login.php">Account</a>';
+						}
+					?>
 					<a href="cart.php">Cart</a>
+
+					<?php
+						if(isset($_SESSION['user_id'])){
+							echo '<a href="includes/logout.php">Logout</a>';
+						}
+					?>
 				</div>
 
 				<div class="doubling ui padded grid">
@@ -171,13 +204,26 @@
 			
 							<div class="right floated right aligned four wide computer five wide tablet column computer only tablet only">
 								<ul class="nav">
-									<li class="nav-item"><a href="login.php" class="nav-link">Account</a></li>
+									<?php
+										if(isset($_SESSION['user_id'])){
+											if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+              									echo '<li class="nav-item"><a href="admin.php" class="nav-link">Account</a></li>';
+              								} else {
+              									echo '<li class="nav-item"><a href="client.php" class="nav-link">Account</a></li>';
+              								}
+										} else {
+											echo '<li class="nav-item"><a href="login.php" class="nav-link">Account</a></li>';
+										}
+									?>
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
+									<?php
+										if(isset($_SESSION['user_id'])){
+											echo '<li class="nav-item"><a href="includes/logout.php" class="nav-link">Logout</a></li>';
+										}
+									?>
 								</ul>		
 							</div>
 						</div>
 					</div>
 				</div>
 			</nav>
-
-

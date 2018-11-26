@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('includes/db.php');
 include('includes/header.php');
 ?>
@@ -39,6 +40,7 @@ $result = mysqli_query($dbc, $sql);
 
  echo "<table class=\"ui celled table\">
  <thead><tr>
+ 	<th></th>
     <th>ID</th>
     <th>Product</th>
     <th>Brand</th>
@@ -52,16 +54,20 @@ $result = mysqli_query($dbc, $sql);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
 
+    $id = $row['PK'];
     echo "<tr>";
 
-    echo "<td>" . $row['PK'] . "</td>";
+    echo "<td><a href=\"includes/update_table.php?id=" . $id . "\"><i class=\"pencil alternate icon\"></i></a></td>";
+    echo "<td>" . $id . "</td>";
     echo "<td>" . $row['prodName'] . "</td>";
     echo "<td>" . $row['prodBrand'] . "</td>";
     echo "<td>" . $row['prodSKU'] . "</td>";
     echo "<td><div class=\"ui input\"><input type=\"text\" value=\"" . $row['prodStock'] . "\"></div></td>";
     echo "<td>" . $row['prodSale'] . "</td>";
 	echo "<td>" . $row['prodPrice'] . "</td>";
-    echo "<td class=\"center aligned\"><i class=\"close icon\"></i></td>";
+    if(isset($_SESSION['type'])=='admin'){
+	  echo "<td class=\"center aligned\"><a href=\"includes/delete_product.php?id=" . $id . "\"><i class=\"close icon\"></i></a></td>";  //remove products
+	}
 
     echo "</tr>";
     }
@@ -74,8 +80,11 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($dbc);
 
 ?>			
-
-
+					<div class="ui one column centered grid">
+						<div class="row">
+							<button class="black ui submit button" name="add"><a href="includes/add_product.php">Add Product</a></button>
+						</div>
+					</div>
 
 							
 							</div>
@@ -134,20 +143,7 @@ mysqli_close($dbc);
 				</form>
 			</div>
 		</div>
-			<	<div id="footer-style" class="ui container fluid footer-style">
-			<div class="center aligned one column stackable ui grid sign-up">
-			<div class="eight wide column">
-				<h4>Sign up for the Boujee Bin Bulletin</h4>
-				<form class="ui form">
-					<div class="field">
-						<div class="ui action input">
-							<input type="email" name="email" placeholder="E-mail address">
-							<button class="ui button">Submit</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
+		<div id="footer-style" class="ui container fluid footer-style">
 			<footer class="ui container basic segment">
 				<?php include('includes/footer.html'); ?>
 			</footer>
