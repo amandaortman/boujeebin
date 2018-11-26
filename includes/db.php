@@ -1,9 +1,9 @@
 <?php
 
-	DEFINE ('DB_USER','');
-	DEFINE ('DB_PASSWORD','');
-	DEFINE ('DB_HOST','');
-	DEFINE ('DB_NAME','');
+	DEFINE ('DB_USER','dig4530c_group02');
+	DEFINE ('DB_PASSWORD','Knights125!#');
+	DEFINE ('DB_HOST','localhost');
+	DEFINE ('DB_NAME','dig4530c_group02');
 
 	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die(mysql_error());
 

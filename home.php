@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('includes/db.php');
 include('includes/header.php');
 ?>
@@ -9,11 +10,11 @@ include('includes/header.php');
 				<div class="ui grid">
 					<div class="two column row">
 						<div class="center aligned column">
-							<h2 class="ui header"><a href="catalog.php">Mens's Fashion</a></h2>
+							<h2 class="ui header"><a href="catalog.php?page=mens">Mens's Fashion</a></h2>
 							<img src="./img/header1.jpg" class="fluid"  alt="Menswear">
 						</div>
 						<div class="center aligned column">
-							<h2 class="ui header"><a href="catalog.php">Women's Fashion</a></h2>
+							<h2 class="ui header"><a href="catalog.php?page=womens">Women's Fashion</a></h2>
 							<img src="./img/header2.jpg" class="fluid" alt="Women's Fashion">
 						</div>
 					</div>
@@ -31,7 +32,7 @@ include('includes/header.php');
 						</div>
 					</div>
 					<div class="two column row">
-						<div class="center aligned middle aligned column">
+						<div class="center aligned middle aligned eight wide computer column sixteen wide tablet sixteen wide mobile">
 
 						<?php
 
@@ -57,7 +58,7 @@ include('includes/header.php');
 							echo "<h3 class=\"ui header\"> Sale Price: " . $row['prodSale'] . "</h3>";
 							
 							echo "<p>" . $row['prodDesc'] . "</p>";
-							echo "<a href=\"product.php\"><button class=\"ui primary button\">View Product</button></a>";
+							echo "<a href=\"product.php?id=2\"><button class=\"ui primary button\">View Product</button></a>";
 
 							}
 						} else {
@@ -78,6 +79,19 @@ include('includes/header.php');
 		</div>
 
 		<div id="footer-style" class="ui container fluid footer-style">
+			<div class="center aligned one column stackable ui grid sign-up">
+			<div class="eight wide column">
+				<h4>Sign up for the Boujee Bin Bulletin</h4>
+				<form class="ui form">
+					<div class="field">
+						<div class="ui action input">
+							<input type="email" name="email" placeholder="E-mail address">
+							<button class="ui button">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 			<footer class="ui container basic segment">
 				<?php include('includes/footer.html'); ?>
 			</footer>
