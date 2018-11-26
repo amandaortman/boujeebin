@@ -56,12 +56,8 @@
             $hashedPwd = password_hash($pass, PASSWORD_DEFAULT);
 
             //Insert user into db
-<<<<<<< HEAD
-            $sql = "INSERT INTO bb_users(customer_id, type, first_name, last_name, username, password, email) VALUES('$email', 'client', $first', '$last', '$user', '$hashedPwd', '$email')";
-=======
             $uniqid = uniqid();
             $sql = "INSERT INTO bb_users(customer_id, type, first_name, last_name, username, password, email) VALUES('$uniqid', 'client', '$first', '$last', '$user', '$hashedPwd', '$email')";
->>>>>>> Latest
             mysqli_query($dbc, $sql);
             header("Location: ../login.php");
             exit();

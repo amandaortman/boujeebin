@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-<?php session_start(); ?>
-=======
 <?php
     if(!isset($_SESSION)) 
     { 
         session_start(); 
 	}
 ?>
->>>>>>> Latest
 	<head>
 
 
@@ -19,29 +15,17 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-<<<<<<< HEAD
-
-=======
->>>>>>> Latest
   gtag('config', 'UA-129205961-1');
 </script>
 
 
 	<?php 
-<<<<<<< HEAD
-
-=======
->>>>>>> Latest
 			$title = 'Boujee Bin';
 			$description = 'Designer Brands at Discount Prices';
 			$url = 'https://url.com';
 			$keywords = 'designer, brands, discounts, clothing, fashion, apparel, womens fashion, mens fashion, discount fashion, bargains, fashion deals, fashion discounts, gucci, louis  vuitton, fendi, prada, kate spade, steve madden, ferragamo, salvatore ferragamo';
 			$share = 'img/share.png';
 			$ico = 'img/favicon.ico';
-<<<<<<< HEAD
-
-=======
->>>>>>> Latest
 		?>
 
 		<title><?php echo $title ?></title>
@@ -163,8 +147,10 @@
 						<div class="mobile only sixteen wide column">
 							<div class="ui search">
 								<div class="ui fluid icon input">
-									<input type="text" name="search" placeholder="Search..." class="prompt">
-									<i class="search icon"></i>
+									<form method="GET" action="search.php" class="ui icon input">
+										<input type="text" name="q" placeholder="Search..." class="prompt">
+										<i class="search icon"><input type="submit" value="" style="display: none;"></i>
+									</form>
 								</div>
 								<div class="results"></div>
 							</div>
@@ -189,8 +175,10 @@
 						<div class=" tablet only computer only right floated right aligned column">
 							<div class="ui search">
 								<div class="ui icon input">
-									<input type="text" name="search" placeholder="Search..." class="prompt">
-									<i class="search icon"></i>
+									<form method="GET" action="search.php" class="ui icon input">
+										<input type="text" name="q" placeholder="Search..." class="prompt">
+										<i class="search icon"><input type="submit" value="" style="display: none;"></i>
+									</form>
 								</div>
 								<div class="results"></div>
 							</div>
@@ -215,14 +203,6 @@
 							</div>
 			
 							<div class="right floated right aligned four wide computer five wide tablet column computer only tablet only">
-<<<<<<< HEAD
-<<<<<<< HEAD
-								<ul class="nav"  id="desktopCart">
-									<li class="nav-item"><a href="login.php" class="nav-link">ACCOUNT</a></li>
-									<li class="nav-item"><a href="cart.php" class="nav-link">Cart<span class="<?php if (!isset($_SESSION['cart_count'])) { echo "hidden content"; }?> floating ui tiny black label"><?php if (isset($_SESSION['cart_count'])) { echo $_SESSION['cart_count']; }?></span></a></li>
-=======
-=======
->>>>>>> Latest
 								<ul class="nav">
 									<?php
 										if(isset($_SESSION['user_id'])){
@@ -236,10 +216,6 @@
 										}
 									?>
 									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
-<<<<<<< HEAD
->>>>>>> merge
-=======
->>>>>>> Latest
 									<?php
 										if(isset($_SESSION['user_id'])){
 											echo '<li class="nav-item"><a href="includes/logout.php" class="nav-link">Logout</a></li>';
@@ -250,12 +226,4 @@
 						</div>
 					</div>
 				</div>
-<<<<<<< HEAD
 			</nav>
-<<<<<<< HEAD
-	
-=======
-			</nav>
->>>>>>> merge
-=======
->>>>>>> Latest
