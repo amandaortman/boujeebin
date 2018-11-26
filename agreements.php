@@ -16,6 +16,7 @@ include('includes/header.php');
 										<li><a href="agreements.php?policy=privacy">Privacy Policy</a></li>
 										<li><a href="agreements.php?policy=return">Return Policy</a></li>
 										<li><a href="agreements.php?policy=shipping">Shipping Policy</a></li>
+										<li><a href="agreements.php?policy=taxation">Taxation Policy</a></li>
 									</ul>
 								<?php
 							} else {
@@ -302,6 +303,19 @@ include('includes/header.php');
 										<h1 class="ui center aligned header">Shipping Policy</h1>
 										<h6 class="ui center aligned header"><a href="agreements.php">Other Policies</a></h6>
 										<p>Boujee Bin is not responsible for lost or damaged packages. Merchandise can be exchanged or returned at your local Boujee Bin or by processing a request online. For more information, please review our <a href="agreements.php?policy=return">Return Policy</a>.<br><br>Shipping fees are determined by the weight and size of the item(s) ordered at checkout. Fees will vary contingent on these factors. Shipping fees may also change based on the sole discretion of the shipping providers: USPS, FedEx or UPS.</p>
+									<?php
+								} else if ($_GET["policy"] == "taxation"){
+									?>
+										<h1 class="ui center aligned header">Taxation Policy</h1>
+										<h6 class="ui center aligned header"><a href="agreements.php">Other Policies</a></h6>
+										<p>All transactions processed through Boujee Bin's website is subject to a six point five percent (6.50%) sales tax. The sales tax laws that make up this total percentage are outlined below.<br><br></p>
+
+											<ul>
+												<li>The state of Florida charges a sales tax of six percent (6.00%).</li>
+												<li>The county of Orange in the state of Florida charges a sales tax of zero point five percent (0.50%).</li>
+											</ul><br><br>
+										
+										<p>Boujee Bin is not considered a "dealer" under state law, refer to <a href="https://www.flsenate.gov/Laws/Statutes/2011/212.0596">Florida Code section 212.06</a>, and therefore does not hold a sales tax nexus in other states within the United States of America.</p>
 									<?php
 								};
 							};
