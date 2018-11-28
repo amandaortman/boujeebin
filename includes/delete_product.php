@@ -33,7 +33,7 @@
               	  echo "<div class=\"ui one column centered grid\"><div class=\"row\">";
 			      echo "<button class=\"black ui secondary button\" name=\"back\"><a style=\"color:#FFF;\" href=\"../admin.php\">Go Back</a></button>";
 			      echo "<form name=\"delete_form\" action=\"delete.php\" method=\"POST\">";
-			      echo "<button class=\"red ui submit button\" name=\"update\">Delete</button>";
+			      echo "<button class=\"red ui submit button\" name=\"delete\">Delete</button>";
 			      echo "</form>";
 			      echo "</div></div>";
               	?>
