@@ -77,7 +77,7 @@ if (mysqli_num_rows($result) > 0) {
 
     echo "</table>";
 
-mysqli_close($dbc);
+//mysqli_close($dbc);
 
 ?>			
 					<div class="ui one column centered grid">
@@ -101,24 +101,22 @@ mysqli_close($dbc);
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td data-label="OrderID">1</td>
-											<td data-label="CustName">Bob Jones</td>
-											<td data-label="TransID"><a href="#">BB12345</a></td>
-											<td data-label="Delete"><a href="#">Delete</a></td>
-										</tr>
-										<tr>
-											<td data-label="OrderID">2</td>
-											<td data-label="CustName">Sarah Doe</td>
-											<td data-label="TransID"><a href="#">BB12345</a></td>
-											<td data-label="Delete"><a href="#">Delete</a></td>
-										</tr>
-										<tr>
-											<td data-label="OrderID">3</td>
-											<td data-label="CustName">John Smith</td>
-											<td data-label="TransID"><a href="#">BB12345</a></td>
-											<td data-label="Delete"><a href="#">Delete</a></td>
-										</tr>
+										<?php
+											$sql = "SELECT * FROM bb_users";
+											$result = mysqli_query($dbc, $sql);
+											if (mysqli_num_rows($result) > 0) {
+												while($row = mysqli_fetch_assoc($result)) {
+											echo "<tr>";
+												echo "<td>" .$row['customer_id'] . "</td>";
+												echo "<td>" .$row['first_name']. "</td>";
+												echo "<td>" .$row['last_name']. "</td>";
+												echo "<td>" .$row['email']. "</td>";
+												echo "<td>$$</td>";
+											}
+										} else {
+											echo "0 results";
+										}
+										?>
 									</tbody>
 								</table>						
 							</div>
