@@ -5,7 +5,7 @@
 	DEFINE ('DB_HOST','localhost');
 	DEFINE ('DB_NAME','dig4530c_group02');
 
-	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die(mysql_error());
+	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die(mysqli_error());
 
 	mysqli_set_charset($dbc, 'uft8');
 

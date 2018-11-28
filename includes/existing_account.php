@@ -44,7 +44,7 @@
           } elseif ($hashedPwdCheck==true) {
             //else if is done to be extra sure user only logs in if password matches
             //$_SESSION['logged_in'] = $row['id'];
-            $_SESSION['user_id'] = $row['email'];  //switch to ID once ID situation is figured out
+            $_SESSION['user_id'] = $row['customer_id'];  //switch to ID once ID situation is figured out
             $_SESSION['type'] = $row['type'];
             $_SESSION['first'] = $row['first_name'];
             $_SESSION['last'] = $row['last_name'];

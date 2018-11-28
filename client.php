@@ -1,7 +1,7 @@
 <?php
-session_start();
 include('includes/db.php');
 include('includes/header.php');
+include('includes/personal.php');
 ?>
 
 		<div class="ui container full-basic-segment">
@@ -10,25 +10,52 @@ include('includes/header.php');
 				<div class="ui grid">
 					<div class="one column row">
 						<div class="column">
-							<form class="ui form">
+							<form class="ui form" name="client-profile" action="includes/process_profile.php" method="POST">
 								<h4 class="ui dividing header">Personal Information</h4>
 								<div class="field">
-									<label>Name</label>
 									<div class="two fields">
 										<div class="field">
-											<input type="text" name="shipping[first-name]" placeholder="First Name" value="<?php
+											<label>First Name</label>
+											<input type="text" name="shipping-first" placeholder="First Name" value="<?php
 												if(isset($_SESSION['first'])){
 													echo $_SESSION['first'];
 												}
 											?>">
 										</div>
 										<div class="field">
-											<input type="text" name="shipping[last-name]" placeholder="Last Name" value="<?php
+											<label>Last Name</label>
+											<input type="text" name="shipping-last" placeholder="Last Name" value="<?php
 												if(isset($_SESSION['last'])){
 													echo $_SESSION['last'];
 												}
-											?>">>
+											?>">
 										</div>
+									</div>
+									<div class="two fields">
+										<div class="field">
+											<label>Username</label>
+											<input type="text" name="username" placeholder="Username" value="<?php
+												if(isset($_SESSION['user'])){
+													echo $_SESSION['user'];
+												}
+											?>">
+										</div>
+										<div class="field">
+											<label>Password</label>
+											<input type="text" name="password" placeholder="Password" value="<?php
+												if(isset($_SESSION['pass'])){
+													echo $_SESSION['pass'];
+												}
+											?>">
+										</div>
+									</div>
+									<div class="field">
+										<label>Email</label>
+										<input type="text" name="email" placeholder="Email" value="<?php
+												if(isset($_SESSION['email'])){
+													echo $_SESSION['email'];
+												}
+											?>">
 									</div>
 								</div>
 								<h4 class="ui dividing header">Shipping Information</h4>
@@ -36,18 +63,40 @@ include('includes/header.php');
 									<label>Billing Address</label>
 									<div class="fields">
 										<div class="twelve wide field">
-											<input type="text" name="shipping[address]" placeholder="Street Address">
+											<input type="text" name="shipping-address" placeholder="Street Address" value="<?php
+												if(isset($_SESSION['st'])){
+													echo $_SESSION['st'];
+												}
+											?>">
 										</div>
 										<div class="four wide field">
-											<input type="text" name="shipping[address-2]" placeholder="Apt #">
+											<input type="text" name="shipping-address-2" placeholder="Apt #" value="<?php
+												if(isset($_SESSION['apt'])){
+													echo $_SESSION['apt'];
+												}
+											?>">
 										</div>
 									</div>
 								</div>
-								<div class="two fields">
+								<div class="three fields">
+									<div class="field">
+										<label>City</label>
+										<input type="text" name="city" placeholder="City" value="<?php
+											if(isset($_SESSION['city'])){
+												echo $_SESSION['city'];
+											}
+										?>">
+									</div>
 									<div class="field">
 										<label>State</label>
-										<select class="ui fluid dropdown">
-											<option value="">State</option>
+										<select class="ui fluid dropdown" name="state">
+											<?php
+												if(isset($_SESSION['state'])){
+													echo "<option value=\"" .$_SESSION['state']. "\">" .$_SESSION['state']. "</option>";
+												} else {
+													echo "<option value=\"\">State</option>";
+												}
+											?>
 											<option value="AL">Alabama</option>
 											<option value="AK">Alaska</option>
 											<option value="AZ">Arizona</option>
@@ -103,7 +152,11 @@ include('includes/header.php');
 									</div>
 									<div class="field">
 										<label>Country</label>
-										<input type="text" name="country" placeholder="Country">
+										<input type="text" name="country" placeholder="Country" value="<?php
+											if(isset($_SESSION['country'])){
+												echo $_SESSION['country'];
+											}
+										?>">
 									</div>
 								</div>
 								<h4 class="ui dividing header">Billing Information</h4>
@@ -143,12 +196,13 @@ include('includes/header.php');
 									</div>
 								</div>
 								
-								<div class="ui primary button" tabindex="0">Update Account Information</div>
+								<button name="submit" class="ui primary button">Update Account Information</button>
+								<!--div class="ui primary submit button" tabindex="0">Update Account Information</div-->
 							</form>
 						</div>
-					</div>	
+					</div>
 				</div>		
-			</div>
+			</div></div>
 
 			
 		</div>
