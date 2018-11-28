@@ -26,12 +26,11 @@ include('header.php');
               <div class="ui bottom attached tab segment active" data-tab="catalog">
 
 <?php
-  //NEED TO FIGURE OUT NUM OF ROWS AND ADD 1
   $sql = "SELECT * FROM products";
   $result = mysqli_query($dbc, $sql);
   $num_rows = mysqli_num_rows($result);
-  $id = $num_rows + 1;
-  $_SESSION['id'] = $id;
+  $id = $num_rows + 1;  //Figure out num of rows and add 1
+  $_SESSION['id'] = $id;  //Differs from $_SESSION['user_id']. This is for col PK in products table
   $sku = $num_rows + 1;
   $_SESSION['sku'] = $sku;
 
@@ -51,7 +50,6 @@ include('header.php');
 
   echo "<tr>";
 
-  //Add session saved values in later
   echo "<td>" . $id . "</td>";
   echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodName\" value=\"\"></div></td>";
   echo "<td><select class=\"ui fluid search dropdown\" name=\"prodBrand\" value=\"\">
@@ -77,7 +75,8 @@ include('header.php');
   echo "</div></div>";
   echo "</form>";
 
-mysqli_close($dbc);
+//Do not include. Breaks needed connection
+//mysqli_close($dbc);
 ?>
 
                 </div>

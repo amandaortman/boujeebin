@@ -143,7 +143,7 @@
 						</div>
 					</div>
 
-					<div class="mobile only one colum row">
+					<div class="mobile only one column row">
 						<div class="mobile only sixteen wide column">
 							<div class="ui search">
 								<div class="ui fluid icon input">
