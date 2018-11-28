@@ -1,7 +1,8 @@
 <?php
+session_start();
 //If user is not logged in as admin or super, do not allow access
-if($SESSION_['type']=='admin' || $SESSION_['type']=='super'){
-  session_start();
+if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+
   include('db.php');
 
   //PHP can only reference names and not IDs
@@ -31,7 +32,10 @@ if($SESSION_['type']=='admin' || $SESSION_['type']=='super'){
       unset($sku);
       exit();
     }
+  } else {
+    header("Location: add_product.php?add=failure");
   }
+  
 } else {
   header("Location: ../login.php?add=complete_failure");
 }

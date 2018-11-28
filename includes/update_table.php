@@ -26,6 +26,7 @@ include('backout_header.php');
               <div class="ui bottom attached tab segment active" data-tab="catalog">
 
 <?php
+if(isset($_GET['id'])){
   $id = $_GET['id'];
   $_SESSION['temp_prod_id'] = $id;
   $sql = "SELECT * FROM products WHERE PK='$id'";
@@ -81,7 +82,15 @@ include('backout_header.php');
       echo "</div></div>";
       echo "</form>";
 
-mysqli_close($dbc);
+//Do not include. Breaks needed connection
+//mysqli_close($dbc);
+} else {
+  echo "<div class=\"ui one column centered grid\"><div class=\"row\">";
+      echo "<p>Something went wrong. Please return to the admin page.</p>";
+      echo "</div><div class=\"row\">";
+      echo "<button class=\"black ui secondary button\" name=\"back\"><a style=\"color:#FFF;\" href=\"../admin.php\">Go Back</a></button>";
+      echo "</div></div>";
+}
 ?>
 
                 </div>
