@@ -1,8 +1,10 @@
 <?php
 	include('db.php');
-	include('header.php');
-	$id = $_GET['id'];
-	$_SESSION['temp_prod_id'] = $id;
+	include('backout_header.php');
+  if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $_SESSION['temp_prod_id'] = $id;
+  }
 ?>
 
 <div class="ui container full-basic-segment">
@@ -62,7 +64,7 @@
     </div>
     <div id="footer-style" class="ui container fluid footer-style">
       <footer class="ui container basic segment">
-        <?php include('footer.html'); ?>
+        <?php include('backout_footer.html'); ?>
       </footer>
     </div>
   </body><!--end body-->
