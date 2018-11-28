@@ -18,10 +18,10 @@ if (mysqli_num_rows($result) > 0) {
                         <span class=\"right floated\">" . $row['prodPrice'] . "</span>
                     </div>
                 </div>
-            <div class=\"ui bottom attached button addToCart\" data-id=\"" . $row['PK'] .  "\">
-                <i class=\"add icon\"></i>
-                Add to Cart
-            </div>";
+            <a class=\"ui bottom attached button\" href=\"product.php?id=" . $row['PK'] . "\" data-id=\"" . $row['PK'] .  "\">
+                
+                View Item
+            </a>";
         echo "</div>";        
     }
 } else {

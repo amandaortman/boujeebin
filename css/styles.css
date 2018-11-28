@@ -283,6 +283,9 @@ a.productImageLink {
     color: #ffffff;
 }
 
+/* button.ui.primary.button[name=submit]{
+    margin-top: 20px;
+} */
 
 #cart_headers {
     margin: 0px;
