@@ -112,7 +112,7 @@
 							echo '<a href="login.php">Account</a>';
 						}
 					?>
-					<a href="cart.php">Cart</a>
+					<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_cart&business=3WFKL5Q3KQ4AA&display=1">Cart</a>
 
 					<?php
 						if(isset($_SESSION['user_id'])){
@@ -132,7 +132,7 @@
 								<a href="login.php" class="item mobile-menu">
 									<i class="user icon"></i>
 								</a>
-								<a href="cart.php" class="item mobile-menu">
+								<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_cart&business=3WFKL5Q3KQ4AA&display=1" class="item mobile-menu">
 									<i class="shopping cart icon"></i>
 								</a>
 
@@ -215,7 +215,7 @@
 											echo '<li class="nav-item"><a href="login.php" class="nav-link">Account</a></li>';
 										}
 									?>
-									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
+									<li class="nav-item"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_cart&business=3WFKL5Q3KQ4AA&display=1" class="nav-link">Cart</a></li>
 									<?php
 										if(isset($_SESSION['user_id'])){
 											echo '<li class="nav-item"><a href="includes/logout.php" class="nav-link">Logout</a></li>';
