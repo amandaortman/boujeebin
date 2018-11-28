@@ -48,7 +48,7 @@ $result = mysqli_query($dbc, $sql);
     <th>Stock</th>
     <th>Sale Price</th>
 	<th>Price</th>
-    <th class=\"center aligned\">Remove</th>
+    <th>Remove</th>
     </tr></thead>";
 
 if (mysqli_num_rows($result) > 0) {

@@ -96,27 +96,27 @@
 
 				<div id="mySidenav" class="sidenav">
 					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-					<a href="home.php">Home</a>
-					<a href="catalog.php?page=all">All</a>
-					<a href="catalog.php?page=new">New Arrivals</a>
-					<a href="catalog.php?page=mens">Mens</a>
-					<a href="catalog.php?page=womens">Womens</a>
+					<a href="../home.php">Home</a>
+					<a href="../catalog.php?page=all">All</a>
+					<a href="../catalog.php?page=new">New Arrivals</a>
+					<a href="../catalog.php?page=mens">Mens</a>
+					<a href="../catalog.php?page=womens">Womens</a>
 					<?php
 						if(isset($_SESSION['user_id'])){
 							if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
-								echo '<a href="admin.php">Account</a>';
+								echo '<a href="../admin.php">Account</a>';
 							} else {
-								echo '<a href="client.php">Account</a>';
+								echo '<a href="../client.php">Account</a>';
 							}
 						} else {
-							echo '<a href="login.php">Account</a>';
+							echo '<a href="../login.php">Account</a>';
 						}
 					?>
-					<a href="cart.php">Cart</a>
+					<a href="../cart.php">Cart</a>
 
 					<?php
 						if(isset($_SESSION['user_id'])){
-							echo '<a href="includes/logout.php">Logout</a>';
+							echo '<a href="logout.php">Logout</a>';
 						}
 					?>
 				</div>
@@ -124,15 +124,15 @@
 				<div class="doubling ui padded grid">
 					<div class="mobile only two column row">
 						<div class="mobile only left aligned middle aligned eight wide column">
-							<a href="home.php"><img class='logo' src='../img/bb-logo.svg' alt='Boujee Bin' /></a>
+							<a href="../home.php"><img class='logo' src='../img/bb-logo.svg' alt='Boujee Bin' /></a>
 						</div>
 
 						<div class="mobile only right floated right aligned middle aligned eight wide column">
 							<div class="borderless right menu">
-								<a href="login.php" class="item mobile-menu">
+								<a href="../login.php" class="item mobile-menu">
 									<i class="user icon"></i>
 								</a>
-								<a href="cart.php" class="item mobile-menu">
+								<a href="../cart.php" class="item mobile-menu">
 									<i class="shopping cart icon"></i>
 								</a>
 
@@ -163,7 +163,7 @@
 				<div class="ui padded grid computer only tablet only">
 					<div class="three column row">
 						<div class="computer only tablet only column">
-							<a href="home.php">
+							<a href="../home.php">
 								<img class='logo' src='../img/bb-logo.svg' alt='Boujee Bin' />
 							</a>
 						</div>
@@ -194,11 +194,11 @@
 						<div class="three column row">
 							<div class="left aligned middle tablet left aligned computer aligned eight wide computer eleven wide tablet column">
 								<ul class="nav">
-									<li class="nav-item"><a href="home.php" class="nav-link active">Home</a></li>
-									<li class="nav-item"><a href="catalog.php?page=all" class="nav-link">All</a></li>
-									<li class="nav-item"><a href="catalog.php?page=new" class="nav-link">New Arrivals</a></li>
-									<li class="nav-item"><a href="catalog.php?page=mens" class="nav-link">Mens</a></li>
-									<li class="nav-item"><a href="catalog.php?page=womens" class="nav-link">Womens</a></li>
+									<li class="nav-item"><a href="../home.php" class="nav-link active">Home</a></li>
+									<li class="nav-item"><a href="../catalog.php?page=all" class="nav-link">All</a></li>
+									<li class="nav-item"><a href="../catalog.php?page=new" class="nav-link">New Arrivals</a></li>
+									<li class="nav-item"><a href="../catalog.php?page=mens" class="nav-link">Mens</a></li>
+									<li class="nav-item"><a href="../catalog.php?page=womens" class="nav-link">Womens</a></li>
 								</ul>
 							</div>
 			
@@ -207,18 +207,18 @@
 									<?php
 										if(isset($_SESSION['user_id'])){
 											if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
-              									echo '<li class="nav-item"><a href="admin.php" class="nav-link">Account</a></li>';
+              									echo '<li class="nav-item"><a href="../admin.php" class="nav-link">Account</a></li>';
               								} else {
-              									echo '<li class="nav-item"><a href="client.php" class="nav-link">Account</a></li>';
+              									echo '<li class="nav-item"><a href="../client.php" class="nav-link">Account</a></li>';
               								}
 										} else {
-											echo '<li class="nav-item"><a href="login.php" class="nav-link">Account</a></li>';
+											echo '<li class="nav-item"><a href="../login.php" class="nav-link">Account</a></li>';
 										}
 									?>
-									<li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
+									<li class="nav-item"><a href="../cart.php" class="nav-link">Cart</a></li>
 									<?php
 										if(isset($_SESSION['user_id'])){
-											echo '<li class="nav-item"><a href="includes/logout.php" class="nav-link">Logout</a></li>';
+											echo '<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';
 										}
 									?>
 								</ul>		

@@ -1,6 +1,6 @@
 <?php
-	include('db.php');
-	include('backout_header.php');
+  include('db.php');
+  include('backout_header.php');
   if(isset($_GET['id'])){
     $id = $_GET['id'];
     $_SESSION['temp_prod_id'] = $id;
@@ -28,17 +28,22 @@
 
               <!-- CATALOG -->
               <div class="ui bottom attached tab segment active" data-tab="catalog">
-              	<?php
-              	  echo "<div class=\"ui one column centered grid\"><div class=\"row\">";
-              	  echo "<h3>Delete for sure?</h3>";
-              	  echo "</div></div>";
-              	  echo "<div class=\"ui one column centered grid\"><div class=\"row\">";
-			      echo "<button class=\"black ui secondary button\" name=\"back\"><a style=\"color:#FFF;\" href=\"../admin.php\">Go Back</a></button>";
-			      echo "<form name=\"delete_form\" action=\"delete.php\" method=\"POST\">";
-			      echo "<button class=\"red ui submit button\" name=\"update\">Delete</button>";
-			      echo "</form>";
-			      echo "</div></div>";
-              	?>
+                <?php
+                  echo "<div class=\"ui one column centered grid\"><div class=\"row\">";
+                  echo "<h3>Delete for sure?</h3>";
+                  echo "</div></div>";
+                  echo "<div class=\"ui one column centered grid\"><div class=\"row\">";
+            echo "<button class=\"black ui secondary button\" name=\"back\"><a style=\"color:#FFF;\" href=\"../admin.php\">Go Back</a></button>";
+            if(isset($_GET['id'])){
+              echo "<form name=\"delete_form\" action=\"delete.php\" method=\"POST\">";
+              echo "<button class=\"red ui submit button\" name=\"delete\">Delete</button>";
+              echo "</form>";
+            } else {
+              //Delete button does nothing if ID is missing
+              echo "<button class=\"red ui button\" name=\"delete\">Delete</button>";
+            }
+            echo "</div></div>";
+                ?>
               </div>
 
             </div>

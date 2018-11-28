@@ -1,6 +1,10 @@
 <?php
 session_start();
-include('db.php');
+
+//If user is not logged in as admin or super, do not allow access
+if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+
+  include('db.php');
 
 //PHP can only reference names and not IDs
 //Check if submit button has been clicked
@@ -18,16 +22,21 @@ if(isset($_POST['add'])) {
   VALUES('$id', '$prodName', '$prodBrand', '$sku', '$prodStock', '$prodSale', '$prodPrice')";
 
   if(mysqli_query($dbc, $sql)) {
-
-    header("Location: ../admin.php?add=success");
-    unset($id);
-    unset($sku);
-    exit();
-  }else {
-    header("Location: ../admin.php?add=failure");
-    unset($id);
-    unset($sku);
-    exit();
+      header("Location: ../admin.php?add=success");
+      unset($id);
+      unset($sku);
+      exit();
+    }else {
+      header("Location: ../admin.php?add=failure");
+      unset($id);
+      unset($sku);
+      exit();
+    }
+  } else {
+    header("Location: add_product.php?add=failure");
   }
+  
+} else {
+  header("Location: ../login.php?add=complete_failure");
 }
 ?>

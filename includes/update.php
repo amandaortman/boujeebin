@@ -1,6 +1,8 @@
 <?php
 session_start();
-include('db.php');
+//If user is not logged in as admin or super, do not allow access
+if($_SESSION['type']=='admin' || $_SESSION['type']=='super'){
+  include('db.php');
 
   if(isset($_POST['update'])) {
       $id = $_SESSION['temp_prod_id'];
@@ -26,5 +28,10 @@ include('db.php');
       unset($id);
       exit();
     }
+  } else {
+    header("Location: ../admin.php?update=failure");
   }
+} else {
+  header("Location: ../login.php?add=complete_failure");
+}
 ?>
