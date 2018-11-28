@@ -41,9 +41,11 @@ if(isset($_GET['id'])){
       <th>SKU</th>
       <th>Stock</th>
       <th>Sale Price</th>
-    <th>Price</th>
-      <th class=\"center aligned\">Remove</th>
-      </tr></thead>";
+      <th>Price</th>";
+      if($_SESSION['type']=='admin'){
+         echo "<th>Remove</th>";
+      }
+      echo "</tr></thead>";
 
   echo "<form name=\"form" . $id . "\" action=\"update.php\" method=\"POST\">";
 
@@ -65,7 +67,7 @@ if(isset($_GET['id'])){
       echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodStock\" value=\"" . $row['prodStock'] . "\" size=\"3\" maxlength=\"3\"></div></td>";
       echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodSale\" value=\"" . $row['prodSale'] . "\" size=\"6\" maxlength=\"20\"></div></td>";
       echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodPrice\" value=\"" . $row['prodPrice'] . "\" size=\"6\" maxlength=\"20\"></div></td>";
-      if(isset($_SESSION['type'])=='admin'){
+      if($_SESSION['type']=='admin'){
         echo "<td class=\"center aligned\"><a href=\"delete_product.php?id=" . $id . "\"><i class=\"close icon\"></i></a></td>";  //remove products
       }
 

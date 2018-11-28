@@ -47,9 +47,11 @@ $result = mysqli_query($dbc, $sql);
     <th>SKU</th>
     <th>Stock</th>
     <th>Sale Price</th>
-	<th>Price</th>
-    <th>Remove</th>
-    </tr></thead>";
+	<th>Price</th>";
+	if($_SESSION['type']=='admin'){
+    	echo "<th>Remove</th>";
+    }
+    echo "</tr></thead>";
 
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
@@ -65,7 +67,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<td><div class=\"ui input\"><input type=\"text\" value=\"" . $row['prodStock'] . "\"></div></td>";
     echo "<td>" . $row['prodSale'] . "</td>";
 	echo "<td>" . $row['prodPrice'] . "</td>";
-    if(isset($_SESSION['type'])=='admin'){
+    if($_SESSION['type']=='admin'){
 	  echo "<td class=\"center aligned\"><a href=\"includes/delete_product.php?id=" . $id . "\"><i class=\"close icon\"></i></a></td>";  //remove products
 	}
 
