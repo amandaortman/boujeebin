@@ -18,7 +18,7 @@
     </div>
 
 
-    <div class="mobile only two column row middle aligned center aligned">
+   <!--  <div class="mobile only two column row middle aligned center aligned">
         <div class="left aligned left floated column">
             <button class="ui basic button" onclick="openFilter()">
                 <i class="icon filter"></i>
@@ -28,17 +28,17 @@
 
         <div class="right floated right aligned column">
             <div class="basic segment">
-                <select class="ui dropdown">
+                <select class="ui dropdown price-sorting" name="price-sorting">
                     <option value="">Sort By</option>
                     <option value="1">Newest</option>
                     <option value="1">Best Sellers</option>
-                    <option value="0">Price Low to High</option>
-                    <option value="1">Price High to Low</option>
+                    <option value="l2h">Price Low to High</option>
+                    <option value="h2l">Price High to Low</option>
                     <option value="0">Product Name A-Z</option>
                 </select>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!--computer-->
     <div class="computer only tablet only three column row middle aligned center aligned">
@@ -48,17 +48,17 @@
                 <?php echo $page_section; ?>
             </div>
         </div>
-        <div class="right floated right aligned four wide column">
+   <!--      <div class="right floated right aligned four wide column">
             <div class="basic segment">
-                <select class="ui dropdown">
+                <select class="ui dropdown price-sorting" name="price-sorting">
                     <option value="">Sort By</option>
                     <option value="1">Newest</option>
                     <option value="1">Best Sellers</option>
-                    <option value="0">Price Low to High</option>
-                    <option value="1">Price High to Low</option>
+                    <option value="l2h">Price Low to High</option>
+                    <option value="h2l">Price High to Low</option>
                     <option value="0">Product Name A-Z</option>
                 </select>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
