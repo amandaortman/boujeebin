@@ -62,7 +62,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<td>" . $row['prodName'] . "</td>";
     echo "<td>" . $row['prodBrand'] . "</td>";
     echo "<td>" . $row['prodSKU'] . "</td>";
-    echo "<td><div class=\"ui input\"><input type=\"text\" value=\"" . $row['prodStock'] . "\"></div></td>";
+    echo "<td>" . $row['prodStock'] . "</div></td>";
     echo "<td>" . $row['prodSale'] . "</td>";
 	echo "<td>" . $row['prodPrice'] . "</td>";
     if(isset($_SESSION['type'])=='admin'){
@@ -94,15 +94,16 @@ if (mysqli_num_rows($result) > 0) {
 								<table class="ui compact table">
 									<thead>
 										<tr>
-											<th>Order ID</th>
-											<th>Name</th>
-											<th>Transaction ID</th>
-											<th>Delete Order</th>
+											<th>Customer ID</th>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>Email</th>
+											<th>Amount Charged</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php
-											$sql = "SELECT * FROM bb_users";
+											$sql = "SELECT * FROM bb_users_orders";
 											$result = mysqli_query($dbc, $sql);
 											if (mysqli_num_rows($result) > 0) {
 												while($row = mysqli_fetch_assoc($result)) {
@@ -111,7 +112,7 @@ if (mysqli_num_rows($result) > 0) {
 												echo "<td>" .$row['first_name']. "</td>";
 												echo "<td>" .$row['last_name']. "</td>";
 												echo "<td>" .$row['email']. "</td>";
-												echo "<td>$$</td>";
+												echo "<td>" .$row['charge']."</td>";
 											}
 										} else {
 											echo "0 results";
