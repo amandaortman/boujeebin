@@ -8,13 +8,17 @@ if (isset($_GET['page'])) {
     } else if ($_GET['page'] == "new")  {
         $sql = "SELECT PK, prodName, prodBrand, prodDesc, prodCat, prodSKU, prodStock, prodSale, prodPrice, prodImg, prodWeightLBS, gender, color, size FROM products ORDER BY PK DESC";
     }
-    else {
+    else if ($_GET['page'] == "all") {
+        $sql = "SELECT PK, prodName, prodBrand, prodDesc, prodCat, prodSKU, prodStock, prodSale, prodPrice, prodImg, prodWeightLBS, gender, color, size FROM products";
+    } else {
         $sql = "SELECT PK, prodName, prodBrand, prodDesc, prodCat, prodSKU, prodStock, prodSale, prodPrice, prodImg, prodWeightLBS, gender, color, size FROM products";
     }
+} else {
+    $sql = "SELECT PK, prodName, prodBrand, prodDesc, prodCat, prodSKU, prodStock, prodSale, prodPrice, prodImg, prodWeightLBS, gender, color, size FROM products";
 }
 
 $result = mysqli_query($dbc, $sql);
-echo "<div class=\"ui link three doubling cards\">";
+echo "<div class=\"ui link three doubling cards eachCard\">";
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
 
