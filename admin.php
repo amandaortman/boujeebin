@@ -91,7 +91,7 @@ if (mysqli_num_rows($result) > 0) {
 
 							<!-- orders -->
 							<div class="ui bottom attached tab segment" data-tab="orders">
-								<table class="ui compact table">
+								<table class="ui celled table">
 									<thead>
 										<tr>
 											<th>Customer ID</th>
