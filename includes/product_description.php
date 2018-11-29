@@ -53,11 +53,11 @@ if (!isset($_GET['id'])) {
 
                     
                     \">
-                    <input type=\"hidden\" name=\"on0\" value=\"Choose a size\">Choose a size> <select name=\"os0\">
+                    <input type=\"hidden\" name=\"on0\" value=\"Choose a size\">Choose a size <br><select name=\"os0\">
                         <option value=\"Small\">Small </option>
                         <option value=\"Medium\">Medium </option>
                         <option value=\"Large\">Large </option>
-                    </select> 
+                    </select><br>
                     
                     <button name=\"submit\" class=\"ui primary button\" style=\"margin-top: 20px;\">Add to Cart</button>
                     <img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">
