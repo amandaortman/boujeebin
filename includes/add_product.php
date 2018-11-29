@@ -42,9 +42,11 @@ include('backout_header.php');
       <th>SKU</th>
       <th>Stock</th>
       <th>Sale Price</th>
-    <th>Price</th>
-      <th class=\"center aligned\">Remove</th>
-      </tr></thead>";
+      <th>Price</th>";
+        if($_SESSION['type']=='admin'){
+          echo "<th>Remove</th>";
+        }
+      echo "</tr></thead>";
 
   echo "<form name=\"form\" action=\"add.php\" method=\"POST\">";
 
@@ -63,8 +65,9 @@ include('backout_header.php');
   echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodStock\" value=\"\" size=\"3\" maxlength=\"3\"></div></td>";
   echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodSale\" value=\"\" size=\"6\" maxlength=\"20\"></div></td>";
   echo "<td><div class=\"ui input\"><input type=\"text\" name=\"prodPrice\" value=\"\" size=\"6\" maxlength=\"20\"></div></td>";
-  if(isset($_SESSION['type'])=='admin'){
-    echo "<td class=\"center aligned\"><i class=\"close icon\"></i></td>";  //remove products
+  if($_SESSION['type']=='admin'){
+    //Remove products
+    echo "<td class=\"center aligned\"><i class=\"close icon\"></i></td>";
   }
   echo "</tr>";
       
