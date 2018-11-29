@@ -85,12 +85,14 @@ $amount_charged = number_format(($amount_charged/100), 2);
 $customer_name = $charge->source->name;
 
 if($customer_exists) {
+	//Add charge to table
+
 
 } else {
 	//customer does not exist
 	//UPDATE TABLE INFORMATION
-	$new_customer = "INSERT INTO bb_users (customer_id, first_name, last_name, email, address, zip, state, city, country) 
-	VALUES ('$customer->id','$billingFirstName','$billingLastName', '$email', '$billingAddress', '$billingZip', '$billingState', '$billingCity', '$billingCountry')";
+	$new_customer = "INSERT INTO bb_users (customer_id, type, first_name, last_name, email, address, zip, state, city, country) 
+	VALUES ('$customer->id', 'client', '$billingFirstName','$billingLastName', '$email', '$billingAddress', '$billingZip', '$billingState', '$billingCity', '$billingCountry')";
 	$nc_result = mysqli_query($dbc, $new_customer);		
 
 	//IF NEW CUSTOMER

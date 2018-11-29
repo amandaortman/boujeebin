@@ -57,6 +57,14 @@ include('includes/personal.php');
 												}
 											?>">
 									</div>
+									<div class="field">
+										<label>Email</label>
+										<input type="text" name="email" placeholder="Email" value="<?php
+												if(isset($_SESSION['email'])){
+													echo $_SESSION['email'];
+												}
+											?>">
+									</div>
 								</div>
 								<h4 class="ui dividing header">Shipping Information</h4>
 								<div class="field">
@@ -79,6 +87,14 @@ include('includes/personal.php');
 									</div>
 								</div>
 								<div class="three fields">
+									<div class="field">
+										<label>City</label>
+										<input type="text" name="city" placeholder="City" value="<?php
+											if(isset($_SESSION['city'])){
+												echo $_SESSION['city'];
+											}
+										?>">
+									</div>
 									<div class="field">
 										<label>City</label>
 										<input type="text" name="city" placeholder="City" value="<?php
@@ -149,6 +165,16 @@ include('includes/personal.php');
 											<option value="WI">Wisconsin</option>
 											<option value="WY">Wyoming</option>
 										</select>
+									</div>
+								</div>
+								<div class="two fields">
+									<div class="field">
+										<label>Zip</label>
+										<input type="text" name="zip" placeholder="Zip" value="<?php
+											if(isset($_SESSION['zip'])){
+												echo $_SESSION['zip'];
+											}
+										?>">
 									</div>
 									<div class="field">
 										<label>Country</label>

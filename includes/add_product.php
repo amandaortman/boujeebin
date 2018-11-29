@@ -43,10 +43,10 @@ include('backout_header.php');
       <th>Stock</th>
       <th>Sale Price</th>
       <th>Price</th>";
-        if($_SESSION['type']=='admin'){
-          echo "<th>Remove</th>";
-        }
-      echo "</tr></thead>";
+      if($_SESSION['type']=='admin'){
+        echo "<th>Remove</th>";
+      }
+    echo "</tr></thead>";
 
   echo "<form name=\"form\" action=\"add.php\" method=\"POST\">";
 

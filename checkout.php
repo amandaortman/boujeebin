@@ -1,5 +1,4 @@
 <?php
-session_start();
 include('includes/db.php');
 include('includes/header.php');
 ?>
@@ -34,10 +33,18 @@ include('includes/header.php');
                                         <label>Name</label>
                                         <div class="two fields">
                                             <div class="field">
-                                                <input type="text" name="customer_first_name" id="customer_first_name" placeholder="First Name">
+                                                <input type="text" name="customer_first_name" id="customer_first_name" placeholder="First Name" value="<?php
+                                                if(isset($_SESSION['first'])){
+                                                    echo $_SESSION['first'];
+                                                }
+                                            ?>">
                                             </div>
                                             <div class="field">
-                                                <input type="text" name="customer_last_name" id="customer_last_name" placeholder="Last Name">
+                                                <input type="text" name="customer_last_name" id="customer_last_name" placeholder="Last Name" value="<?php
+                                                if(isset($_SESSION['last'])){
+                                                    echo $_SESSION['last'];
+                                                }
+                                            ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -45,20 +52,52 @@ include('includes/header.php');
                                     <div class="field">
                                         <label for="stripeEmail">Email</label>
                                         <div class="field">
-                                            <input type="email"  id="stripeEmail" name="stripeEmail" placeholder="E-mail">
+                                            <input type="email"  id="stripeEmail" name="stripeEmail" placeholder="E-mail" value="<?php
+                                                if(isset($_SESSION['email'])){
+                                                    echo $_SESSION['email'];
+                                                }
+                                            ?>">
                                         </div>
                                     </div>
 
                                     <h4 class="ui dividing header">Shipping Information</h4>
                                     <div class="two fields">
-                                        <div class="field">
+                                        <div class="twelve wide field">
                                             <label>Billing Address</label>
-                                            <input type="text" id="address_line1" name="address_line1" placeholder="Street Address">
+                                            <input type="text" id="address_line1" name="address_line1" placeholder="Street Address" value="<?php
+                                                if(isset($_SESSION['st'])){
+                                                    echo $_SESSION['st'];
+                                                }
+                                            ?>">
+                                        </div>
+                                        <div class="four wide field">
+                                            <input type="text" placeholder="Apt #" value="<?php
+                                                if(isset($_SESSION['apt'])){
+                                                    echo $_SESSION['apt'];
+                                                }
+                                            ?>">
+                                        </div>
+                                    </div>
+
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label>City</label>
+                                            <input type="text" name="address_city" id="address_city" placeholder="City" value="<?php
+                                            if(isset($_SESSION['city'])){
+                                                echo $_SESSION['city'];
+                                            }
+                                        ?>">
                                         </div>
                                         <div class="field">
                                             <label>State</label>
                                             <select class="ui fluid dropdown" name="address_state" id="address_state">
-                                                <option value="">State</option>
+                                                <?php
+                                                if(isset($_SESSION['state'])){
+                                                    echo "<option value=\"" .$_SESSION['state']. "\">" .$_SESSION['state']. "</option>";
+                                                } else {
+                                                    echo "<option value=\"\">State</option>";
+                                                }
+                                            ?>
                                                 <option value="AL">Alabama</option>
                                                 <option value="AK">Alaska</option>
                                                 <option value="AZ">Arizona</option>
@@ -113,20 +152,23 @@ include('includes/header.php');
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="three fields">
-                                        <div class="field">
-                                            <label>City</label>
-                                            <input type="text" name="address_city" id="address_city" placeholder="City">
-                                        </div>
+                                    <div class="two fields">
                                         <div class="field">
                                             <label>Zip</label>
-                                            <input type="text" name="address_zip" id="address_zip" maxlength="5" placeholder="Zip code">
+                                            <input type="text" name="address_zip" id="address_zip" maxlength="5" placeholder="Zip Code" value="<?php
+                                                if(isset($_SESSION['zip'])){
+                                                    echo $_SESSION['zip'];
+                                                }
+                                            ?>"">
                                         </div> 
                                         <div class="field">
                                             <label>Country</label>
-                                            <input type="text" name="address_country" id="address_country" placeholder="Country">
-                                        </div>                               
+                                            <input type="text" name="address_country" id="address_country" placeholder="Country" value="<?php
+                                            if(isset($_SESSION['country'])){
+                                                echo $_SESSION['country'];
+                                            }
+                                        ?>">
+                                        </div>                            
                                     </div>
 
                                     <h4 class="ui dividing header">Billing Information</h4>
@@ -158,28 +200,28 @@ include('includes/header.php');
         </div>
 
 
-			<div id="footer-style" class="ui container fluid footer-style">
-			<div class="center aligned one column stackable ui grid sign-up">
-			<div class="eight wide column">
-				<h4>Sign up for the Boujee Bin Bulletin</h4>
-				<form class="ui form">
-					<div class="field">
-						<div class="ui action input">
-							<input type="email" name="email" placeholder="E-mail address">
-							<button class="ui button">Submit</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-			<footer class="ui container basic segment">
-				<?php include('includes/footer.html'); ?>
-			
+            <div id="footer-style" class="ui container fluid footer-style">
+            <div class="center aligned one column stackable ui grid sign-up">
+            <div class="eight wide column">
+                <h4>Sign up for the Boujee Bin Bulletin</h4>
+                <form class="ui form">
+                    <div class="field">
+                        <div class="ui action input">
+                            <input type="email" name="email" placeholder="E-mail address">
+                            <button class="ui button">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+            <footer class="ui container basic segment">
+                <?php include('includes/footer.html'); ?>
+            
 
                 <!--Stripe API-->
                 <script src="https://js.stripe.com/v3/"></script>
                 <script type="text/javascript" src="js/checkout.js"></script>
-			</footer>
-		</div>
-	</body><!--end body-->
+            </footer>
+        </div>
+    </body><!--end body-->
 </html>
